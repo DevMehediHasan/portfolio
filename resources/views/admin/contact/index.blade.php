@@ -21,7 +21,7 @@
                 <div class="header">
                     <h2>
                         All Recent Works
-                        <span class="badge bg-blue"> {{ $recentWorks->count() }}</span>
+                        <span class="badge bg-blue"> {{ $Contacts->count() }}</span>
                     </h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
@@ -42,41 +42,44 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Title</th>
-                                <th>Category</th>
-                                <th>Image</th>
-                                <th>Description</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Subject</th>
+                                <th>Message</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
                                 <th>ID</th>
-                                <th>Title</th>
-                                <th>Category</th>
-                                <th>Image</th>
-                                <th>Description</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Subject</th>
+                                <th>Message</th>
                                 <th>Action</th>
                             </tr>
                             </tfoot>
                             <tbody>
-                            @foreach($recentWorks as $key=>$recentWork)
+                            @foreach($Contacts as $key=>$Contact)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ str_limit($recentWork->title, '10') }}</td>
-                                    <td>{{ $recentWork->Category->name}}</td>
-                                    <td><img src="{{url('uploads/work/'.$recentWork->image)}}" width="100" height="100px"></td>
-                                    <td>{!! $recentWork->description !!}</td>
+                                    <td>{{ $Contact->name }}</td>
+                                    <td>{{ $Contact->email }}</td>
+                                    <td>{{ $Contact->phone }}</td>
+                                    <td>{{ $Contact->subject }}</td>
+                                    <td>{!! $Contact->description !!}</td>
                                     <td class="text-center">
 
-                                        <a href="{{ route('admin.recent-work.edit',$recentWork->id) }}" class="btn btn-info waves-effect">
+                                        <a href="" class="btn btn-info waves-effect">
                                             <i class="material-icons">edit</i>
                                         </a>
 
-                                        <button type="button" class="btn btn-danger waves-effect" onclick="deleteWork({{$recentWork->id}})">
+                                        <button type="button" class="btn btn-danger waves-effect" onclick="deleteWork({{$Contact->id}})">
                                             <i class="material-icons">delete</i>
                                         </button>
-                                        <form id="delete-form-{{$recentWork->id}}" action="{{route('admin.recent-work.destroy', $recentWork->id)}}" method="POST" style="display: none;">
+                                        <form id="delete-form-{{$Contact->id}}" action="{{route('admin.recent-work.destroy', $Contact->id)}}" method="POST" style="display: none;">
                                             @csrf
                                             @method("DELETE")
                                         </form>

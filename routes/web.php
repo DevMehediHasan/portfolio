@@ -12,10 +12,12 @@
 */
 
 Route::get('/', 'Frontend\IndexController@Index' )->name('index');
+Route::post('contacts', ['as'=>'contacts.store','uses'=>'ContactController@store']);
 Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admin']],function (){
     Route::get('/dashboard','DashboardController@index')->name('dashboard');
     Route::resource('recent-work', 'RecentWorkController');
     Route::resource('category', 'CategoryController');
+    Route::resource('contact', 'ContactController');
 });
 
 Auth::routes();

@@ -793,40 +793,68 @@
 
                     <div class="col-md-8">
                         <!-- Contact Form -->
-                        <form id="contact-form" class="contact-form mt-6" method="post" action="https://jthemes.net/themes/html/bolby/demo/form/contact.php">
-
+                        <form id="contact-form" class="contact-form mt-6" method="post" action="{{ route('admin.contact.store') }}">
+                            @csrf
                             <div class="messages"></div>
 
                             <div class="row">
                                 <div class="column col-md-6">
                                     <!-- Name input -->
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Your name" required="required" data-error="Name is required.">
-                                        <div class="help-block with-errors"></div>
+                                    <div class="form-group"  {{ $errors->has('name') ? ' has-error' : '' }}>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Your name" required="required" data-error="Name is required.">
+                                        @if ($errors->has('name'))
+                                            <span class="help-block with-errors">
+											<strong>{{ $errors->first('name') }}</strong>
+										</span>
+                                        @endif
                                     </div>
                                 </div>
 
                                 <div class="column col-md-6">
                                     <!-- Email input -->
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Email address" required="required" data-error="Email is required.">
-                                        <div class="help-block with-errors"></div>
+                                    <div class="form-group" {{ $errors->has('email') ? ' has-error' : '' }}>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email address" required="required" data-error="Email is required.">
+                                        @if ($errors->has('email'))
+                                            <span class="help-block with-errors">
+											<strong>{{ $errors->first('email') }}</strong>
+										</span>
+                                        @endif
                                     </div>
                                 </div>
 
-                                <div class="column col-md-12">
+                                <div class="column col-md-6">
                                     <!-- Email input -->
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="InputSubject" name="InputSubject" placeholder="Subject" required="required" data-error="Subject is required.">
-                                        <div class="help-block with-errors"></div>
+                                    <div class="form-group" {{ $errors->has('phone') ? ' has-error' : '' }}>
+                                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Subject" required="required" data-error="Subject is required.">
+                                        @if ($errors->has('phone'))
+                                            <span class="help-block with-errors">
+											<strong>{{ $errors->first('phone') }}</strong>
+										</span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="column col-md-6">
+                                    <!-- Email input -->
+                                    <div class="form-group" {{ $errors->has('subject') ? ' has-error' : '' }}>
+                                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required="required" data-error="Subject is required.">
+                                        @if ($errors->has('subject'))
+                                            <span class="help-block with-errors">
+											<strong>{{ $errors->first('subject') }}</strong>
+										</span>
+                                        @endif
                                     </div>
                                 </div>
 
                                 <div class="column col-md-12">
                                     <!-- Message textarea -->
-                                    <div class="form-group">
-                                        <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" placeholder="Message" required="required" data-error="Message is required."></textarea>
-                                        <div class="help-block with-errors"></div>
+                                    <div class="form-group" {{ $errors->has('message') ? ' has-error' : '' }}>
+                                        <textarea name="message" id="message" class="form-control" rows="5" placeholder="Message" required="required" data-error="Message is required."></textarea>
+                                        @if ($errors->has('message'))
+                                            <span class="help-block with-errors">
+											<strong>{{ $errors->first('message') }}</strong>
+										</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
