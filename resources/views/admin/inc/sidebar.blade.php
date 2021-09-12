@@ -52,17 +52,17 @@
                 </li>
                 <li class="{{ Request::is('admin/contacts*') ? 'active': ''}}">
                     <a href="{{route('admin.contacts.index')}}">
-                        <i class="material-icons">article</i>
+                        <i class="material-icons">contacts</i>
                         <span>Contacts</span>
                     </a>
                 </li>
                 <li class="header">System</li>
-                <li class="{{ Request::is('admin/settings') ? 'active': ''}}">
-                    <a href="">
-                        <i class="material-icons">settings</i>
-                        <span>Settings</span>
-                    </a>
-                </li>
+{{--                <li class="{{ Request::is('admin/settings') ? 'active': ''}}">--}}
+{{--                    <a href="">--}}
+{{--                        <i class="material-icons">settings</i>--}}
+{{--                        <span>Settings</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
