@@ -38,34 +38,22 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="{{ Request::is('admin/recent-work*') ? 'active': ''}}">
-                    <a href="{{ route('admin.recent-work.index') }}">
-                        <i class="material-icons">article</i>
-                        <span>Recent Work</span>
-                    </a>
-                </li>
                 <li class="{{ Request::is('admin/category*') ? 'active': ''}}">
                     <a href="{{ route('admin.category.index') }}">
                         <i class="material-icons">apps</i>
                         <span>Category</span>
                     </a>
                 </li>
-                <li class="{{ Request::is('admin/post*') ? 'active': ''}}">
-                    <a href="">
+                <li class="{{ Request::is('admin/recent-work*') ? 'active': ''}}">
+                    <a href="{{ route('admin.recent-work.index') }}">
                         <i class="material-icons">article</i>
-                        <span>Posts</span>
+                        <span>Recent Work</span>
                     </a>
                 </li>
-                <li class="{{ Request::is('admin/favorite') ? 'active': ''}}">
-                    <a href="">
-                        <i class="material-icons">favorite</i>
-                        <span>Favorites</span>
-                    </a>
-                </li>
-                <li class="{{ Request::is('admin/subscriber') ? 'active': ''}}">
-                    <a href="">
-                        <i class="material-icons">subscriptions</i>
-                        <span>Subscribers</span>
+                <li class="{{ Request::is('admin/contacts*') ? 'active': ''}}">
+                    <a href="{{route('admin.contacts.index')}}">
+                        <i class="material-icons">article</i>
+                        <span>Contacts</span>
                     </a>
                 </li>
                 <li class="header">System</li>

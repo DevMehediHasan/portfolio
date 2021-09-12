@@ -1,6 +1,5 @@
-@extends('layouts.frontend.app')
+@extends('layouts.app')
 
-@section('title'.'Register')
 
 @push('css')
     <link href="{{ asset('assets/frontend/css/auth/styles.css') }}" rel="stylesheet">

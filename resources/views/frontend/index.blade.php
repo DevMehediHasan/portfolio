@@ -793,7 +793,7 @@
 
                     <div class="col-md-8">
                         <!-- Contact Form -->
-                        <form id="contact-form" class="contact-form mt-6" method="post" action="{{ route('admin.contact.store') }}">
+                        <form class="contact-form mt-6" action="{{ route('contact.store') }}" method="post">
                             @csrf
                             <div class="messages"></div>
 
@@ -859,7 +859,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit" name="submit" id="submit" value="Submit" class="btn btn-default">Send Message</button><!-- Send Button -->
+                            <button type="submit" name="submit" value="Submit" class="btn btn-default">Send Message</button><!-- Send Button -->
 
                         </form>
                         <!-- Contact Form end -->

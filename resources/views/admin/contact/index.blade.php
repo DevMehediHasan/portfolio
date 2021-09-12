@@ -8,10 +8,6 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <a class="btn btn-primary waves-effect" href="{{route('admin.contact.create')}}">
-                <i class="material-icons">add</i>
-                <span>Add new Work</span>
-            </a>
         </div>
     </div>
     <!-- Exportable Table -->
@@ -20,7 +16,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        All Recent Works
+                        All Contacts
                         <span class="badge bg-blue"> {{ $Contacts->count() }}</span>
                     </h2>
                     <ul class="header-dropdown m-r--5">
@@ -69,17 +65,13 @@
                                     <td>{{ $Contact->email }}</td>
                                     <td>{{ $Contact->phone }}</td>
                                     <td>{{ $Contact->subject }}</td>
-                                    <td>{!! $Contact->description !!}</td>
+                                    <td>{!! $Contact->message !!}</td>
                                     <td class="text-center">
-
-                                        <a href="" class="btn btn-info waves-effect">
-                                            <i class="material-icons">edit</i>
-                                        </a>
 
                                         <button type="button" class="btn btn-danger waves-effect" onclick="deleteWork({{$Contact->id}})">
                                             <i class="material-icons">delete</i>
                                         </button>
-                                        <form id="delete-form-{{$Contact->id}}" action="{{route('admin.recent-work.destroy', $Contact->id)}}" method="POST" style="display: none;">
+                                        <form id="delete-form-{{$Contact->id}}" action="{{route('admin.contacts.destroy', $Contact->id)}}" method="POST" style="display: none;">
                                             @csrf
                                             @method("DELETE")
                                         </form>

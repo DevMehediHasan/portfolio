@@ -12,21 +12,13 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return view('admin.contact.index');
+        $Contacts = Contact::all();
+        return view('admin.contact.index',compact('Contacts'));
     }
 
 
     public function store(Request $request)
     {
-//        $contact = new Contact();
-//        $contact->name = $request->name;
-//        $contact->email = $request->email;
-//        $contact->subject = $request->subject;
-//        $contact->phone = $request->phone;
-//        $contact->message = $request->message;
-//        $contact->save();
-////        Toastr::success('Category successfully saved','Success');
-//        return redirect()->route('admin.category.index');
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
@@ -35,9 +27,21 @@ class ContactController extends Controller
             'message' => 'required'
         ]);
 
-        Contact::create($request->all());
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->phone = $request->phone;
+        $contact->message = $request->message;
+        $contact->save();
+        Toastr::success('Category successfully saved','Success');
+        return redirect()->back();
+//        return redirect()->route('admin.category.index');
 
-        return back()->with('success', 'Thanks for contacting us!');
+
+//        Contact::create($request->all());
+
+//        return back()->with('success', 'Thanks for contacting us!');
     }
 
     public function show(Contact $contact)
