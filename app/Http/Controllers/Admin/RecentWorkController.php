@@ -98,7 +98,8 @@ class RecentWorkController extends Controller
     public function edit($id)
     {
         $recentWorks = RecentWork::find($id);
-        return view('admin.recent_works.edit',compact('recentWorks'));
+        $categories = Category::all();
+        return view('admin.recent_works.edit',compact('recentWorks','categories'));
     }
 
     /**
@@ -108,9 +109,38 @@ class RecentWorkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, RecentWork $recentWork)
     {
-        //
+                $image = $request->file('image');
+        $slug = str_slug($request->title);
+        if (isset($image))
+        {
+            $currentDate = Carbon::now()->toDateString();
+            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+
+            if (!Storage::disk('public')->exists('uploads/work'))
+            {
+                Storage::disk('public')->makeDirectory('uploads/work');
+            }
+//            Delete Old post Image
+            if (Storage::disk('public')->exists('uploads/work/'.$recentWork->image))
+            {
+                Storage::disk('public')->delete('uploads/work/'.$recentWork->image);
+            }
+            $recentWorkImage = Image::make($image)->save($image->getClientOriginalExtension());
+            Storage::disk('public')->put('uploads/work/'.$imageName,$recentWorkImage);
+        }else{
+            $imageName ="$recentWork->image";
+        }
+        $recentWork->title = $request->title;
+        $recentWork->category_id = $request->category_id;
+        $recentWork->slug = $slug;
+        $recentWork->image = $imageName;
+        $recentWork->description = $request->description;
+        $recentWork->save();
+
+        Toastr::success('Post Successfully Updated', 'Success');
+        return redirect()->route('admin.recent-work.index');
     }
 
     /**

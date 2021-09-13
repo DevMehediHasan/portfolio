@@ -36,29 +36,14 @@ class ContactController extends Controller
         $contact->save();
         Toastr::success('Category successfully saved','Success');
         return redirect()->back();
-//        return redirect()->route('admin.category.index');
-
-
-//        Contact::create($request->all());
-
-//        return back()->with('success', 'Thanks for contacting us!');
-    }
-
-    public function show(Contact $contact)
-    {
-        //
     }
 
 
-
-    public function update(Request $request, Contact $contact)
+    public function destroy($id)
     {
-        //
-    }
-
-
-    public function destroy(Contact $contact)
-    {
-        //
+        $contact = Contact::find($id);
+        $contact->delete();
+        Toastr::success('Contact successfully deleted','Success');
+        return redirect()->back();
     }
 }
