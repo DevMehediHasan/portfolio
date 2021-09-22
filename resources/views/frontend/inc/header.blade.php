@@ -44,8 +44,8 @@
         </div>
         <!-- logo image -->
         <div class="site-logo">
-            <a href="index-2.html">
-                <img src="{{asset('frontend/images/mehedi.png')}}" alt="Mehedi" />
+            <a href="/">
+                <img src="{{asset('frontend/images/mehedi.png')}}" alt="Developer Mehedi" />
             </a>
         </div>
     </div>
@@ -56,8 +56,8 @@
 
     <!-- logo image -->
     <div class="site-logo">
-        <a href="index-2.html">
-            <img src="{{asset('frontend/images/mehedi.png')}}" alt="Mehedi" />
+        <a href="/">
+            <img src="{{asset('frontend/images/mehedi.png')}}" alt="Developer Mehedi" />
         </a>
     </div>
 
@@ -73,11 +73,5 @@
             <li><a href="#contact"><i class="icon-bubbles"></i></a></li>
         </ul>
     </nav>
-
-{{--    <!-- site footer -->--}}
-{{--    <div class="footer">--}}
-{{--        <!-- copyright text -->--}}
-{{--        <span class="copyright">© 2020 Bolby Template.</span>--}}
-{{--    </div>--}}
 
 </header>

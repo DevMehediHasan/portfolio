@@ -104,7 +104,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <!-- about text -->
-                                    <p>Hi, Currently I'm working as a Web Developer at Star It Limited since 2018. I have skills all the way from design to HTML, CSS, PHP, JavaScript & Custom WordPress themes & Plugins developed. My goal is to build innovative and performant websites according to coding standards and technical design.</p>
+                                    <p>Hi, Currently I'm working as a Web Developer at Star It Limited since 2018. I have skills all the way from design to HTML, CSS, PHP, Laravel, JavaScript & Custom WordPress themes & Plugins developed. My goal is to build innovative and performant websites according to coding standards and technical design.</p>
                                     <div class="mt-3">
                                         <a href="#" class="btn btn-default">Download CV</a>
                                     </div>
@@ -284,27 +284,27 @@
                             <!-- timeline item -->
                             <div class="timeline-container wow fadeInUp">
                                 <div class="content">
-                                    <span class="time">2019 - Present</span>
-                                    <h3 class="title">Academic Degree</h3>
-                                    <p>Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.</p>
+                                    <span class="time">2018 - 2021</span>
+                                    <h3 class="title">Bachelor’s Degree</h3>
+                                    <p>I have completed BSc in CSE from Daffodil International University.</p>
                                 </div>
                             </div>
 
                             <!-- timeline item -->
                             <div class="timeline-container wow fadeInUp" data-wow-delay="0.2s">
                                 <div class="content">
-                                    <span class="time">2017 - 2013</span>
-                                    <h3 class="title">Bachelor’s Degree</h3>
-                                    <p>Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.</p>
+                                    <span class="time">2013 - 2017</span>
+                                    <h3 class="title">Diploma in CST</h3>
+                                    <p>I have completed Diploma Engineering in CST from Institute Of Computer Science & Technology(ICST).</p>
                                 </div>
                             </div>
 
                             <!-- timeline item -->
                             <div class="timeline-container wow fadeInUp" data-wow-delay="0.4s">
                                 <div class="content">
-                                    <span class="time">2013 - 2009</span>
-                                    <h3 class="title">Honours Degree</h3>
-                                    <p>Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.</p>
+                                    <span class="time">2012</span>
+                                    <h3 class="title">Secondary Degree</h3>
+                                    <p>I have completed SSC from Shaheen Academy School & College Feni.</p>
                                 </div>
                             </div>
 
@@ -326,8 +326,8 @@
                             <!-- timeline item -->
                             <div class="timeline-container wow fadeInUp">
                                 <div class="content">
-                                    <span class="time">2019 - Present</span>
-                                    <h3 class="title">Web Designer</h3>
+                                    <span class="time">2017 - Present</span>
+                                    <h3 class="title">Back-End Developer</h3>
                                     <p>Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.</p>
                                 </div>
                             </div>
@@ -335,7 +335,7 @@
                             <!-- timeline item -->
                             <div class="timeline-container wow fadeInUp" data-wow-delay="0.2s">
                                 <div class="content">
-                                    <span class="time">2017 - 2013</span>
+                                    <span class="time">2016 - 2021</span>
                                     <h3 class="title">Front-End Developer</h3>
                                     <p>Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.</p>
                                 </div>
@@ -344,8 +344,8 @@
                             <!-- timeline item -->
                             <div class="timeline-container wow fadeInUp" data-wow-delay="0.4s">
                                 <div class="content">
-                                    <span class="time">2013 - 2009</span>
-                                    <h3 class="title">Back-End Developer</h3>
+                                    <span class="time">2015 - 2021</span>
+                                    <h3 class="title">Web Designer</h3>
                                     <p>Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.</p>
                                 </div>
                             </div>
@@ -374,22 +374,28 @@
                 <div class="spacer" data-height="60"></div>
 
                 <!-- portfolio filter (desktop) -->
+{{--                <ul class="portfolio-filter list-inline wow fadeInUp">--}}
+{{--                    <li class="current list-inline-item" data-filter="*">Everything</li>--}}
+{{--                    <li class="list-inline-item" data-filter=".creative">Creative</li>--}}
+{{--                    <li class="list-inline-item" data-filter=".art">Art</li>--}}
+{{--                    <li class="list-inline-item" data-filter=".design">Design</li>--}}
+{{--                    <li class="list-inline-item" data-filter=".branding">Branding</li>--}}
+{{--                </ul>--}}
+
                 <ul class="portfolio-filter list-inline wow fadeInUp">
                     <li class="current list-inline-item" data-filter="*">Everything</li>
-                    <li class="list-inline-item" data-filter=".creative">Creative</li>
-                    <li class="list-inline-item" data-filter=".art">Art</li>
-                    <li class="list-inline-item" data-filter=".design">Design</li>
-                    <li class="list-inline-item" data-filter=".branding">Branding</li>
+                    @foreach($categories as $category)
+                        <li class="list-inline-item" data-filter=".{{$category->id}}">{{$category->name}}</li>
+                    @endforeach
                 </ul>
 
                 <!-- portfolio filter (mobile) -->
                 <div class="pf-filter-wrapper">
                     <select class="portfolio-filter-mobile">
                         <option value="*">Everything</option>
-                        <option value=".creative">Creative</option>
-                        <option value=".art">Art</option>
-                        <option value=".design">Design</option>
-                        <option value=".branding">Branding</option>
+                        @foreach($categories as $category)
+                        <option value=".{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -397,117 +403,142 @@
                 <div class="row portfolio-wrapper">
 
                     <!-- portfolio item -->
-                    <div class="col-md-4 col-sm-6 grid-item art">
-                        <a href="{{asset('frontend/images/works/1.svg')}}" class="work-image">
-                            <div class="portfolio-item rounded shadow-dark">
-                                <div class="details">
-                                    <span class="term">Art</span>
-                                    <h4 class="title">Project Managment Illustration</h4>
-                                    <span class="more-button"><i class="icon-magnifier-add"></i></span>
+{{--                    <div class="col-md-4 col-sm-6 grid-item art">--}}
+{{--                        <a href="{{asset('frontend/images/works/1.svg')}}" class="work-image">--}}
+{{--                            <div class="portfolio-item rounded shadow-dark">--}}
+{{--                                <div class="details">--}}
+{{--                                    <span class="term">Art</span>--}}
+{{--                                    <h4 class="title">Project Managment Illustration</h4>--}}
+{{--                                    <span class="more-button"><i class="icon-magnifier-add"></i></span>--}}
+{{--                                </div>--}}
+{{--                                <div class="thumb">--}}
+{{--                                    <img src="{{asset('frontend/images/works/1.svg')}}" alt="Portfolio-title" />--}}
+{{--                                    <div class="mask"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+                    @foreach($recentWorks as $work)
+                    <div class="col-md-4 col-sm-6 grid-item {{$work->category_id}}">
+
+                            <a href="#small-dialog" class="work-content">
+                                <div class="portfolio-item rounded shadow-dark">
+                                    <div class="details">
+                                        <span class="term">{{$work->category_id}}</span>
+                                        <h4 class="title">{{$work->title}}</h4>
+                                        <span class="more-button"><i class="icon-options"></i></span>
+                                    </div>
+                                    <div class="thumb">
+                                        <img src="{{asset('uploads/work/'.$work->image)}}" alt="Portfolio-title" />
+                                        <div class="mask"></div>
+                                    </div>
                                 </div>
-                                <div class="thumb">
-                                    <img src="{{asset('frontend/images/works/1.svg')}}" alt="Portfolio-title" />
-                                    <div class="mask"></div>
-                                </div>
+                            </a>
+                            <div id="small-dialog" class="white-popup zoom-anim-dialog mfp-hide">
+                                <img src="{{asset('uploads/work/'.$work->image)}}" alt="Title" />
+                                <h2>{{$work->title}}</h2>
+                                <p>{!! $work->description !!}</p>
+                                <a href="#" class="btn btn-default">View on Dribbble</a>
                             </div>
-                        </a>
+
                     </div>
+                    @endforeach
 
                     <!-- portfolio item -->
-                    <div class="col-md-4 col-sm-6 grid-item creative design">
-                        <a href="#small-dialog" class="work-content">
-                            <div class="portfolio-item rounded shadow-dark">
-                                <div class="details">
-                                    <span class="term">Creative</span>
-                                    <h4 class="title">Guest App Walkthrough Screens</h4>
-                                    <span class="more-button"><i class="icon-options"></i></span>
-                                </div>
-                                <div class="thumb">
-                                    <img src="{{asset('frontend/images/works/2.svg')}}" alt="Portfolio-title" />
-                                    <div class="mask"></div>
-                                </div>
-                            </div>
-                        </a>
-                        <div id="small-dialog" class="white-popup zoom-anim-dialog mfp-hide">
-                            <img src="{{asset('frontend/images/single-work.svg')}}" alt="Title" />
-                            <h2>Guest App Walkthrough Screens</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam hendrerit nibh in massa semper rutrum. In rhoncus eleifend mi id tempus.</p>
-                            <p>Donec consectetur, libero at pretium euismod, nisl felis lobortis urna, id tristique nisl lectus eget ligula.</p>
-                            <a href="#" class="btn btn-default">View on Dribbble</a>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-4 col-sm-6 grid-item creative design">--}}
+{{--                        <a href="#small-dialog" class="work-content">--}}
+{{--                            <div class="portfolio-item rounded shadow-dark">--}}
+{{--                                <div class="details">--}}
+{{--                                    <span class="term">Creative</span>--}}
+{{--                                    <h4 class="title">Guest App Walkthrough Screens</h4>--}}
+{{--                                    <span class="more-button"><i class="icon-options"></i></span>--}}
+{{--                                </div>--}}
+{{--                                <div class="thumb">--}}
+{{--                                    <img src="{{asset('frontend/images/works/2.svg')}}" alt="Portfolio-title" />--}}
+{{--                                    <div class="mask"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        <div id="small-dialog" class="white-popup zoom-anim-dialog mfp-hide">--}}
+{{--                            <img src="{{asset('frontend/images/single-work.svg')}}" alt="Title" />--}}
+{{--                            <h2>Guest App Walkthrough Screens</h2>--}}
+{{--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam hendrerit nibh in massa semper rutrum. In rhoncus eleifend mi id tempus.</p>--}}
+{{--                            <p>Donec consectetur, libero at pretium euismod, nisl felis lobortis urna, id tristique nisl lectus eget ligula.</p>--}}
+{{--                            <a href="#" class="btn btn-default">View on Dribbble</a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <!-- portfolio item -->
-                    <div class="col-md-4 col-sm-6 grid-item branding">
-                        <a href="https://www.youtube.com/watch?v=qf9z4ulfmYw" class="work-video">
-                            <div class="portfolio-item rounded shadow-dark">
-                                <div class="details">
-                                    <span class="term">Branding</span>
-                                    <h4 class="title">Delivery App Wireframe</h4>
-                                    <span class="more-button"><i class="icon-camrecorder"></i></span>
-                                </div>
-                                <div class="thumb">
-                                    <img src="{{asset('frontend/images/works/3.svg')}}" alt="Portfolio-title" />
-                                    <div class="mask"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+{{--                    <!-- portfolio item -->--}}
+{{--                    <div class="col-md-4 col-sm-6 grid-item branding">--}}
+{{--                        <a href="https://www.youtube.com/watch?v=qf9z4ulfmYw" class="work-video">--}}
+{{--                            <div class="portfolio-item rounded shadow-dark">--}}
+{{--                                <div class="details">--}}
+{{--                                    <span class="term">Branding</span>--}}
+{{--                                    <h4 class="title">Delivery App Wireframe</h4>--}}
+{{--                                    <span class="more-button"><i class="icon-camrecorder"></i></span>--}}
+{{--                                </div>--}}
+{{--                                <div class="thumb">--}}
+{{--                                    <img src="{{asset('frontend/images/works/3.svg')}}" alt="Portfolio-title" />--}}
+{{--                                    <div class="mask"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
 
-                    <!-- portfolio item -->
-                    <div class="col-md-4 col-sm-6 grid-item creative">
-                        <a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/240233494&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" class="work-video">
-                            <div class="portfolio-item rounded shadow-dark">
-                                <div class="details">
-                                    <span class="term">Creative</span>
-                                    <h4 class="title">Onboarding Motivation</h4>
-                                    <span class="more-button"><i class="icon-music-tone-alt"></i></span>
-                                </div>
-                                <div class="thumb">
-                                    <img src="{{asset('frontend/images/works/4.svg')}}" alt="Portfolio-title" />
-                                    <div class="mask"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+{{--                    <!-- portfolio item -->--}}
+{{--                    <div class="col-md-4 col-sm-6 grid-item creative">--}}
+{{--                        <a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/240233494&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" class="work-video">--}}
+{{--                            <div class="portfolio-item rounded shadow-dark">--}}
+{{--                                <div class="details">--}}
+{{--                                    <span class="term">Creative</span>--}}
+{{--                                    <h4 class="title">Onboarding Motivation</h4>--}}
+{{--                                    <span class="more-button"><i class="icon-music-tone-alt"></i></span>--}}
+{{--                                </div>--}}
+{{--                                <div class="thumb">--}}
+{{--                                    <img src="{{asset('frontend/images/works/4.svg')}}" alt="Portfolio-title" />--}}
+{{--                                    <div class="mask"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
 
-                    <!-- portfolio item -->
-                    <div class="col-md-4 col-sm-6 grid-item art branding">
-                        <a href="#gallery-1" class="gallery-link">
-                            <div class="portfolio-item rounded shadow-dark">
-                                <div class="details">
-                                    <span class="term">Art, Branding</span>
-                                    <h4 class="title">iMac Mockup Design</h4>
-                                    <span class="more-button"><i class="icon-picture"></i></span>
-                                </div>
-                                <div class="thumb">
-                                    <img src="{{asset('frontend/images/works/5.svg')}}" alt="Portfolio-title" />
-                                    <div class="mask"></div>
-                                </div>
-                            </div>
-                        </a>
-                        <div id="gallery-1" class="gallery mfp-hide">
-                            <a href="{{asset('frontend/images/works/4.svg')}}"></a>
-                            <a href="{{asset('frontend/images/works/5.svg')}}"></a>
-                        </div>
-                    </div>
+{{--                    <!-- portfolio item -->--}}
+{{--                    <div class="col-md-4 col-sm-6 grid-item art branding">--}}
+{{--                        <a href="#gallery-1" class="gallery-link">--}}
+{{--                            <div class="portfolio-item rounded shadow-dark">--}}
+{{--                                <div class="details">--}}
+{{--                                    <span class="term">Art, Branding</span>--}}
+{{--                                    <h4 class="title">iMac Mockup Design</h4>--}}
+{{--                                    <span class="more-button"><i class="icon-picture"></i></span>--}}
+{{--                                </div>--}}
+{{--                                <div class="thumb">--}}
+{{--                                    <img src="{{asset('frontend/images/works/5.svg')}}" alt="Portfolio-title" />--}}
+{{--                                    <div class="mask"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        <div id="gallery-1" class="gallery mfp-hide">--}}
+{{--                            <a href="{{asset('frontend/images/works/4.svg')}}"></a>--}}
+{{--                            <a href="{{asset('frontend/images/works/5.svg')}}"></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <!-- portfolio item -->
-                    <div class="col-md-4 col-sm-6 grid-item creative design">
-                        <a href="https://themeforest.net/user/pxlsolutions/portfolio" target="_blank">
-                            <div class="portfolio-item rounded shadow-dark">
-                                <div class="details">
-                                    <span class="term">Creative, Design</span>
-                                    <h4 class="title">Game Store App Concept</h4>
-                                    <span class="more-button"><i class="icon-link"></i></span>
-                                </div>
-                                <div class="thumb">
-                                    <img src="{{asset('frontend/images/works/6.svg')}}" alt="Portfolio-title" />
-                                    <div class="mask"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+{{--                    <!-- portfolio item -->--}}
+{{--                    <div class="col-md-4 col-sm-6 grid-item creative design">--}}
+{{--                        <a href="https://themeforest.net/user/pxlsolutions/portfolio" target="_blank">--}}
+{{--                            <div class="portfolio-item rounded shadow-dark">--}}
+{{--                                <div class="details">--}}
+{{--                                    <span class="term">Creative, Design</span>--}}
+{{--                                    <h4 class="title">Game Store App Concept</h4>--}}
+{{--                                    <span class="more-button"><i class="icon-link"></i></span>--}}
+{{--                                </div>--}}
+{{--                                <div class="thumb">--}}
+{{--                                    <img src="{{asset('frontend/images/works/6.svg')}}" alt="Portfolio-title" />--}}
+{{--                                    <div class="mask"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
 
                 </div>
 
@@ -624,7 +655,7 @@
                         <!-- client item -->
                         <div class="client-item">
                             <div class="inner">
-                                <img src="{{asset('frontend/images/client-1.svg')}}" alt="client-name" />
+                                <img src="{{asset('frontend/images/php.png')}}" alt="client-name" width="100"/>
                             </div>
                         </div>
                     </div>
@@ -640,7 +671,7 @@
                         <!-- client item -->
                         <div class="client-item">
                             <div class="inner">
-                                <img src="{{asset('frontend/images/client-3.svg')}}" alt="client-name" />
+                                <img src="{{asset('frontend/images/html.svg.png')}}" alt="client-name" width="50"/>
                             </div>
                         </div>
                     </div>
@@ -648,7 +679,7 @@
                         <!-- client item -->
                         <div class="client-item">
                             <div class="inner">
-                                <img src="{{asset('frontend/images/client-4.svg')}}" alt="client-name" />
+                                <img src="{{asset('frontend/images/Figma.svg')}}" alt="client-name" width="40"/>
                             </div>
                         </div>
                     </div>
@@ -656,7 +687,7 @@
                         <!-- client item -->
                         <div class="client-item">
                             <div class="inner">
-                                <img src="{{asset('frontend/images/client-5.svg')}}" alt="client-name" />
+                                <img src="{{asset('frontend/images/laravel.png')}}" alt="client-name" width="60"/>
                             </div>
                         </div>
                     </div>
@@ -664,7 +695,7 @@
                         <!-- client item -->
                         <div class="client-item">
                             <div class="inner">
-                                <img src="{{asset('frontend/images/client-6.svg')}}" alt="client-name" />
+                                <img src="{{asset('frontend/images/css.svg.png')}}" alt="client-name" width="40"/>
                             </div>
                         </div>
                     </div>
@@ -672,7 +703,7 @@
                         <!-- client item -->
                         <div class="client-item">
                             <div class="inner">
-                                <img src="{{asset('frontend/images/client-7.svg')}}" alt="client-name" />
+                                <img src="{{asset('frontend/images/js.svg.png')}}" alt="client-name" width="40"/>
                             </div>
                         </div>
                     </div>
@@ -680,7 +711,7 @@
                         <!-- client item -->
                         <div class="client-item">
                             <div class="inner">
-                                <img src="{{asset('frontend/images/client-8.svg')}}" alt="client-name" />
+                                <img src="{{asset('frontend/images/client-8.svg')}}" alt="client-name" width="50"/>
                             </div>
                         </div>
                     </div>
@@ -690,86 +721,86 @@
 
         </section>
 
-        <!-- section blog -->
-        <section id="blog">
+{{--        <!-- section blog -->--}}
+{{--        <section id="blog">--}}
 
-            <div class="container">
+{{--            <div class="container">--}}
 
-                <!-- section title -->
-                <h2 class="section-title wow fadeInUp">Latest Posts</h2>
+{{--                <!-- section title -->--}}
+{{--                <h2 class="section-title wow fadeInUp">Latest Posts</h2>--}}
 
-                <div class="spacer" data-height="60"></div>
+{{--                <div class="spacer" data-height="60"></div>--}}
 
-                <div class="row blog-wrapper">
+{{--                <div class="row blog-wrapper">--}}
 
-                    <div class="col-md-4">
-                        <!-- blog item -->
-                        <div class="blog-item rounded bg-white shadow-dark wow fadeIn">
-                            <div class="thumb">
-                                <a href="#">
-                                    <span class="category">Reviews</span>
-                                </a>
-                                <a href="#">
-                                    <img src="{{asset('frontend/images/blog/1.svg')}}" alt="blog-title" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <h4 class="my-0 title"><a href="#">5 Best App Development Tool for Your Project</a></h4>
-                                <ul class="list-inline meta mb-0 mt-2">
-                                    <li class="list-inline-item">09 February, 2020</li>
-                                    <li class="list-inline-item">Bolby</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-4">--}}
+{{--                        <!-- blog item -->--}}
+{{--                        <div class="blog-item rounded bg-white shadow-dark wow fadeIn">--}}
+{{--                            <div class="thumb">--}}
+{{--                                <a href="#">--}}
+{{--                                    <span class="category">Reviews</span>--}}
+{{--                                </a>--}}
+{{--                                <a href="#">--}}
+{{--                                    <img src="{{asset('frontend/images/blog/1.svg')}}" alt="blog-title" />--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+{{--                            <div class="details">--}}
+{{--                                <h4 class="my-0 title"><a href="#">5 Best App Development Tool for Your Project</a></h4>--}}
+{{--                                <ul class="list-inline meta mb-0 mt-2">--}}
+{{--                                    <li class="list-inline-item">09 February, 2020</li>--}}
+{{--                                    <li class="list-inline-item">Bolby</li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="col-md-4">
-                        <!-- blog item -->
-                        <div class="blog-item rounded bg-white shadow-dark wow fadeIn">
-                            <div class="thumb">
-                                <a href="#">
-                                    <span class="category">Tutorial</span>
-                                </a>
-                                <a href="#">
-                                    <img src="{{asset('frontend/images/blog/2.svg')}}" alt="blog-title" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <h4 class="my-0 title"><a href="#">Common Misconceptions About Payment</a></h4>
-                                <ul class="list-inline meta mb-0 mt-2">
-                                    <li class="list-inline-item">07 February, 2020</li>
-                                    <li class="list-inline-item">Bolby</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-4">--}}
+{{--                        <!-- blog item -->--}}
+{{--                        <div class="blog-item rounded bg-white shadow-dark wow fadeIn">--}}
+{{--                            <div class="thumb">--}}
+{{--                                <a href="#">--}}
+{{--                                    <span class="category">Tutorial</span>--}}
+{{--                                </a>--}}
+{{--                                <a href="#">--}}
+{{--                                    <img src="{{asset('frontend/images/blog/2.svg')}}" alt="blog-title" />--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+{{--                            <div class="details">--}}
+{{--                                <h4 class="my-0 title"><a href="#">Common Misconceptions About Payment</a></h4>--}}
+{{--                                <ul class="list-inline meta mb-0 mt-2">--}}
+{{--                                    <li class="list-inline-item">07 February, 2020</li>--}}
+{{--                                    <li class="list-inline-item">Bolby</li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="col-md-4">
-                        <!-- blog item -->
-                        <div class="blog-item rounded bg-white shadow-dark wow fadeIn">
-                            <div class="thumb">
-                                <a href="#">
-                                    <span class="category">Business</span>
-                                </a>
-                                <a href="#">
-                                    <img src="{{asset('frontend/images/blog/3.svg')}}" alt="blog-title" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <h4 class="my-0 title"><a href="#">3 Things To Know About Startup Business</a></h4>
-                                <ul class="list-inline meta mb-0 mt-2">
-                                    <li class="list-inline-item">06 February, 2020</li>
-                                    <li class="list-inline-item">Bolby</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-4">--}}
+{{--                        <!-- blog item -->--}}
+{{--                        <div class="blog-item rounded bg-white shadow-dark wow fadeIn">--}}
+{{--                            <div class="thumb">--}}
+{{--                                <a href="#">--}}
+{{--                                    <span class="category">Business</span>--}}
+{{--                                </a>--}}
+{{--                                <a href="#">--}}
+{{--                                    <img src="{{asset('frontend/images/blog/3.svg')}}" alt="blog-title" />--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+{{--                            <div class="details">--}}
+{{--                                <h4 class="my-0 title"><a href="#">3 Things To Know About Startup Business</a></h4>--}}
+{{--                                <ul class="list-inline meta mb-0 mt-2">--}}
+{{--                                    <li class="list-inline-item">06 February, 2020</li>--}}
+{{--                                    <li class="list-inline-item">Bolby</li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                </div>
+{{--                </div>--}}
 
-            </div>
+{{--            </div>--}}
 
-        </section>
+{{--        </section>--}}
 
         <!-- section contact -->
         <section id="contact">
